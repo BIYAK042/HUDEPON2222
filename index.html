@@ -1,1 +1,66 @@
 
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#6552a8">
+  <title>Violet Studio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="phone">
+    <header class="status-bar">
+      <span id="device-time">00:00</span>
+      <div class="status-icons">
+        <span>●</span>
+        <span>⌁</span>
+        <span>▰</span>
+      </div>
+    </header>
+
+    <main id="app">
+      <section class="gallery-screen">
+        <header class="app-header">
+          <button id="back-button" class="icon-button" aria-label="뒤로 가기">‹</button>
+          <h1 id="screen-title">갤러리</h1>
+          <button id="add-photos" class="icon-button" aria-label="사진 추가">＋</button>
+        </header>
+
+        <input id="photo-input" type="file" accept="image/*" multiple hidden>
+
+        <label class="search-box">
+          <span>⌕</span>
+          <input id="search-input" type="search" placeholder="사진 또는 앨범 검색">
+        </label>
+
+        <nav class="gallery-tabs">
+          <button class="tab active" data-view="all">전체 사진</button>
+          <button class="tab" data-view="albums">앨범</button>
+          <button class="tab" data-view="favorites">즐겨찾기</button>
+        </nav>
+
+        <div id="selection-toolbar" class="selection-toolbar" hidden>
+          <span id="selection-count">0개 선택됨</span>
+          <button id="add-to-album">앨범에 추가</button>
+          <button id="delete-selected">삭제</button>
+        </div>
+
+        <section id="gallery-content" aria-live="polite"></section>
+      </section>
+    </main>
+
+    <footer class="bottom-bar">
+      <button id="home-button" aria-label="홈으로 이동">⌂</button>
+      <span>Violet Studio</span>
+    </footer>
+  </div>
+
+  <dialog id="app-dialog">
+    <div id="dialog-content"></div>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
