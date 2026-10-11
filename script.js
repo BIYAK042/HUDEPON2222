@@ -95,13 +95,28 @@ async function deletePhoto(id) {
   await transaction("photos", "readwrite", (store) => store.delete(id));
 }
 
+
+
 async function refreshData() {
+  photos.forEach((photo) => {
+    if (photo.url) {
+      URL.revokeObjectURL(photo.url);
+    }
+  });
+
   photos = (await getAll("photos"))
     .sort((a, b) => b.createdAt - a.createdAt);
+
+  photos.forEach((photo) => {
+    if (photo.blob) {
+      photo.url = URL.createObjectURL(photo.blob);
+    }
+  });
 
   albums = await getAll("albums");
   render();
 }
+
 
 function escapeHTML(value) {
   return String(value).replace(/[&<>"']/g, (character) => ({
